@@ -9,24 +9,13 @@ export class UserRepository {
       name: 'Daniel',
       age: 25,
       defaultCurrency: 'ILS',
-      friends: ['Shachar', 'David', 'Elad'],
+      connections: ['Shachar', 'David', 'Elad'],
+      messages: [],
     },
   ];
-  constructor() {}
-
-  findAll(): UserEntity[] {
-    return this.users;
-  }
+  constructor() { }
 
   findOne(id: string): UserEntity | undefined {
     return this.users.find((user) => user.id === '1');
-  }
-  remove(id: string): void {
-    const removeId = this.users.findIndex((user) => user.id === id);
-    if (removeId !== -1) {
-      this.users.splice(removeId, 1);
-    } else {
-      console.log('error');
-    }
   }
 }
