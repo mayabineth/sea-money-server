@@ -3,5 +3,12 @@ export class UserEntity {
   name: string;
   age: number;
   defaultCurrency: string;
-  friends: string[];
+  connections: string[];
+  messages: MessageType[];
+}
+
+export interface MessageType {
+  id: string;
+  title: string;
+  content: string;
 }
