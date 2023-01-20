@@ -1,0 +1,10 @@
+Dockerfile
+.dockerignore
+dist
+node_modules
+npm-debug.log
+coverage
+cypress
+README.md
+.git
+.gitignore
