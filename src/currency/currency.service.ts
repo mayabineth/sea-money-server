@@ -12,17 +12,18 @@ export class CurrencyService {
   // example of request url = 'https://api.apilayer.com/currency_data/live?base=USD&symbols=EUR,GBP
   private currencyApiUrl = 'https://api.apilayer.com/currency_data/live';
 
-  async getConversion(
+  async getConversionRates(
     baseCurrency: string,
     symbolsCurrencies: string[],
-  ): Promise<unknown> {
+  ): Promise<CurrencyApiResponse> {
     try {
       const result = await axios.get(this.currencyApiUrl, {
         ...this.axiosCurrencyRequestConfig,
         headers: { apiKey: key },
         params: {
           base: baseCurrency,
-          symbols: symbolsCurrencies.join(','),
+          // FIXME: remove symbols or use different api since its malfunctioning
+          // symbols: symbolsCurrencies.join(','),
         }
       });
       console.log(`[CurrencyService:result]: ${result.data}`);
@@ -31,4 +32,11 @@ export class CurrencyService {
       console.error(`[CurrencyService:error]: ${error}`);
     }
   }
+}
+
+export type CurrencyApiResponse = {
+  success: boolean;
+  timestamp: number;
+  source: string;
+  quotes: any;
 }

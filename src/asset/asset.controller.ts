@@ -26,7 +26,7 @@ export class AssetController {
 
   @Get()
   async findAll() {
-    return this.currencyService.getConversion('USD', ['ILS', 'EUR']);
+    return this.currencyService.getConversionRates('USD', ['ILS', 'EUR']);
     // return this.assetService.findAll();
   }
 
