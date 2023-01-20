@@ -15,6 +15,6 @@ describe('AssetController', () => {
   });
 
   it('should be defined', () => {
-    expect(controller).toBeUndefined();
+    expect(controller).toBeDefined();
   });
 });
