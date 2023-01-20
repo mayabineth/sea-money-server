@@ -1,15 +1,17 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
+import { UserRepository } from './user.repository';
 
 describe('UserService', () => {
   let service: UserService;
+  let userRepository: Partial<UserRepository> ;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [UserService],
-    }).compile();
 
-    service = module.get<UserService>(UserService);
+    userRepository = {
+      findOne: jest.fn(),
+    };
+
+    service = new UserService(userRepository as UserRepository);
   });
 
   it('should be defined', () => {
