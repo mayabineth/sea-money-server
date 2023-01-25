@@ -21,4 +21,4 @@ jobs:
       - run: npm run build
       # FIXME: need to also add a step to build docker image after the branch with dockerfile will merge to main
       #  - name: Build the Docker image
-      # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
