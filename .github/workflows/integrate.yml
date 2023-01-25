@@ -1,0 +1,24 @@
+name: Node Continuous Integration
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+jobs:
+  test_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.13.0
+          cache: 'npm'
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      # FIXME: need to also add a step to build docker image after the branch with dockerfile will merge to main
+      #  - name: Build the Docker image
+      - run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)

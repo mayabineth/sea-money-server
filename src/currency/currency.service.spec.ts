@@ -199,13 +199,11 @@ describe('CurrencyService', () => {
           USDZWL: 321.999592,
         },
       };
-      // axios.get = jest.fn().mockResolvedValueOnce({ data: responseData });
+      axios.get = jest.fn().mockResolvedValueOnce({ data: responseData });
       // when
       const result = await service.getConversionRates(base);
       // then
-      // expect(axios.get).toBeCalledWith('', {});
       expect(result).toBe(responseData);
-      expect(Object.values(responseData.quotes).length).toBeGreaterThan(10);
     });
     // it('should throw Error when axios request failed', async () => {
     //   // given

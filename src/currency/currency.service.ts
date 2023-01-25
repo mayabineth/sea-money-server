@@ -14,7 +14,7 @@ export class CurrencyService {
 
   async getConversionRates(
     baseCurrency: string,
-    symbolsCurrencies: string[],
+    // symbolsCurrencies: string[],
   ): Promise<CurrencyApiResponse> {
     try {
       const result = await axios.get(this.currencyApiUrl, {

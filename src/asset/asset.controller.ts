@@ -1,4 +1,3 @@
-import { CurrencyService } from './../currency/currency.service';
 import {
   Controller,
   Get,
@@ -16,7 +15,6 @@ import { UpdateAssetDto } from './dto/update-asset.dto';
 export class AssetController {
   constructor(
     private readonly assetService: AssetService,
-    private readonly currencyService: CurrencyService,
   ) {}
 
   @Post()
@@ -26,8 +24,7 @@ export class AssetController {
 
   @Get()
   async findAll() {
-    return this.currencyService.getConversionRates('USD', ['ILS', 'EUR']);
-    // return this.assetService.findAll();
+    return this.assetService.findAll();
   }
 
   @Get(':id')
