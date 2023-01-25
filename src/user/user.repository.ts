@@ -13,6 +13,7 @@ export class UserRepository {
       messages: [],
     },
   ];
+  constructor() {}
 
   findOne(id: string): UserEntity | undefined {
     return this.users.find((user) => user.id === '1');
